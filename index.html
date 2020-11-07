@@ -5,39 +5,103 @@
     <title>Inventario enlazada</title>
 </head>
 <body>
+    <style>
+        form fieldset {
+            float: left;
+            width: 30.8%;
+            height: 95%;
+            border: indigo 5px dotted;
+        }
+        .fieldset-1{
+            float: left;
+            width: 99%;
+            height: 101%;
+            border: red 5px dashed;
+        }
+        input:focus {
+            border: 5px solid #000;
+            background: #F3F3F3;
+        }
+    </style>
     <center><h1>APP Para control de Inventario</h1></center>
+    <fieldset class="fieldset-1">
+<div>
+    <form id="AgregarP" method="post">
+        <fieldset>
+            <h1>Llene el siguiente formulario</h1>
+            <p></p>
+            <p></p>
+            <h2><label for="text">Codigo del Producto:</label></h2>
+            <input type="number" id="codigo">
+            <p></p>
+            <h2><label for="text">Nombre del producto:</label></h2>
+            <input type="text" id="nombre">
+            <p></p>
+            <h2><label for="text">Cantidad de Productos:</label></h2>
+            <input type="text" id="cantidad">
+            <p></p>
+            <h2><label for="text">Coste del Producto:</label></h2>
+            <input type="text" id="coste">
+            <p></p>
+            <h2><label for="text">Descripcción:</label></h2>
+            <input type="text" id="desc">
+            <p></p>
+            <input type="button" value="Agregar Producto" id="btnadd">
+            <p></p>
+        </fieldset>
+    </form>    
+</div>
+<div>
+    <form id="IngresePosicion" method="post">
+        <fieldset>
+            <h1>Agregar Producto en Posición Especifica</h1>
+            <h2><label for="text">Codigo del Producto:</label></h2>
+            <input type="number" id="codigo">
+            <p></p>
+            <h2><label for="text">Nombre del producto:</label></h2>
+            <input type="text" id="nombre">
+            <p></p>
+            <h2><label for="text">Cantidad de Productos:</label></h2>
+            <input type="text" id="cantidad">
+            <p></p>
+            <h2><label for="text">Coste del Producto:</label></h2>
+            <input type="text" id="coste">
+            <p></p>
+            <h2><label for="text">Descripcción:</label></h2>
+            <input type="text" id="desc">
+            <p></p>
+            <h2><label for="text">IngresePosicion</label></h2>
+            <input type="text" id="posicion">
+            <p></p>
+            <input type="button" value="Agregar Producto" id="btnadd">
+        </fieldset>    
+    </form>
+</div>
     <div>
-        <div>
-            <form>
-                <h1>Llene el siguiente formulario</h1>
-                <p></p>
-                <p></p>
-                <h2><label for="text">Nombre del producto:</label></h2>
-                <input type="text" id="nombre">
-                <p></p>
+        <form id="agregarinicio" method="post">
+            <fieldset>
                 <h2><label for="text">Codigo del Producto:</label></h2>
-                <input type="number" id="codigo">
-                <p></p>
-                <h2><label for="text">Descripcción:</label></h2>
-                <input type="text" id="desc">
-                <p></p>
-                <h2><label for="text">Cantidad de Productos:</label></h2>
-                <input type="text" id="cantidad">
-                <p></p>
-                <h2><label for="text">Coste del Producto:</label></h2>
-                <input type="text" id="coste">
-                <p></p>
-                <h2><label for="text">Ingrese la posición:</label></h2>
-                <input type="text" id="posicion">
-                <p></p>
-                <input type="button" value="Agregar Producto" id="btnadd">
-                <p></p>
-                <p></p>
-                <label for="numero">Borrar por codigo de Producto:</label>
+            <input type="number" id="codigo">
+            <p></p>
+            <h2><label for="text">Nombre del producto:</label></h2>
+            <input type="text" id="nombre">
+            <p></p>
+            <h2><label for="text">Cantidad de Productos:</label></h2>
+            <input type="text" id="cantidad">
+            <p></p>
+            <h2><label for="text">Coste del Producto:</label></h2>
+            <input type="text" id="coste">
+            <p></p>
+            <h2><label for="text">Descripcción:</label></h2>
+            <input type="text" id="desc">
+            </fieldset>
+        </form>
+    </div>
+</fieldset>>
+    <div>
+    <label for="numero">Borrar por codigo de Producto:</label>
                 <input type="number" id="borrarxcod">
                 <input type="button" value="Borrar" id="btnborrar" />
-                <p></p>
-                <p></p>
                 <label for="numero">Buscar Producto por Codigo:</label>
                 <input type="number" id="buscarxcod">
                 <input type="button" value="Buscar" id="btnbuscar">
@@ -45,12 +109,10 @@
                 <input type="button" value="Listar Productos" id="btnlistar">
                 <p></p>
                 <input type="button" value="Listar Productos (Orden Inverso)" id="btnlistarinv">
-            </form>    
-        </div>
-            <div>
-                    <ul id="lista" class="list"></ul>
-            </div>
     </div>
+        <div>
+          <ul id="lista" class="list"></ul>
+        </div>
 </body>
 <script src="main.js"></script>
 </html>
