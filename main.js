@@ -21,5 +21,24 @@ class Inventario{
         this.inicio = null;
         this.size = 0;
     };
-    add(codigo, nombre, desc, cantidad, coste)
+    add(codigo, nombre, desc, cantidad, coste){
+        const nuevop = new Producto(codigo, nombre, desc, cantidad, coste, null);
+        if(!this.inicio){
+            this.inicio = nuevop;
+        }else{
+            let current = this.inicio;
+            while(current.siguiente){
+                current = current.siguiente;
+            };
+            current.siguiente = nuevop;
+        };
+        this.size++
+    };
+    ingresarP(codigo, nombre, desc, cantidad, coste, index){
+        if(index<0 || index > this.size){
+            return null
+        };
+        const nuevop = nuevop(codigo, nombre, desc, cantidad, cantidad, coste)
+        
+    }
 };
