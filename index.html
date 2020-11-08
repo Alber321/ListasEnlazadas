@@ -8,14 +8,14 @@
     <style>
         form fieldset {
             float: left;
-            width: 30.821%;
-            height: 94%;
+            width: 47.43%;
+            height: 95%;
             border: indigo 5px dotted;
         }
         .fieldset-1{
             float: left;
-            width: 99%;
-            height: 91%;
+            width: 97%;
+            height: 100%;
             border: red 5px dashed;
         }
         input:focus {
@@ -24,14 +24,35 @@
         }
         h1{
             border: darkcyan 5px double;
+            font-size: 35px ;
+        }
+        input[type=button]{
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 30px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+        input[type=text], [type=number]{
+            background-color: #96d4d4;
+            border: none;
+            color: rgb(0, 0, 0);
+            padding: 5px 35px;
+            margin: 4px 2px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+        h3{
+            font-size: 25px;
         }
     </style>
     <center><h1>APP Para control de Inventario</h1></center>
     <fieldset class="fieldset-1">
 <div>
-    <form id="AgregarP" method="post">
+    <form>
         <fieldset>
-            <h1>Llene el siguiente formulario</h1>
+            <center><h1>FORMULARIO</h1></center>
             <h3><label for="text">Codigo del Producto:</label></h3>
             <input type="number" id="codigo">
             <p></p>
@@ -47,74 +68,44 @@
             <h3><label for="text">Descripcción:</label></h3>
             <input type="text" id="desc">
             <p></p>
-            <input type="button" value="Agregar Producto" id="btnadd">
+            <input type="button" value="Agregar Producto" id="Agregar">
             <p></p>
         </fieldset>
     </form>    
 </div>
 <div>
-    <form id="IngresePosicion" method="post">
+    <form>
         <fieldset>
-            <h1>Agregar Producto en Posición Especifica</h1>
-            <h3><label for="text">Codigo del Producto:</label></h3>
-            <input type="number" id="codigo2">
-            <p></p>
-            <h3><label for="text">Nombre del producto:</label></h3>
-            <input type="text" id="nombre2">
-            <p></p>
-            <h3><label for="text">Cantidad de Productos:</label></h3>
-            <input type="text" id="cantidad2">
-            <p></p>
-            <h3><label for="text">Coste del Producto:</label></h3>
-            <input type="text" id="coste2">
-            <p></p>
-            <h3><label for="text">Descripcción:</label></h3>
-            <input type="text" id="desc2">
-            <p></p>
-            <h3><label for="text">IngresePosicion</label></h3>
-            <input type="text" id="posicion2">
-            <p></p>
-            <input type="button" value="Agregar Producto" id="btnadd">
+            <center><h1>BOTONES</h1></center>
+                <h3><label for="numero">Borrar por codigo de Producto:</label></h3>                
+                <input type="button" value="Borrar" id="Borrar" />
+                <h3><label for="numero">Buscar Producto por Codigo:</label></h3>
+                <input type="button" value="Buscar" id="Buscar">
+                <p></p>
+                <input type="button" value="Mostrar Producto" id="Mostrar">
+                <p></p>
+                <input type="button" value="Mostrar Productos (Orden Inverso)" id="MostrarInverso">
+                <p></p>
+                <p></p>
+                <input type="button" value="Insertar la Posición del Producto" id="Insertar">
+                <br>
+                <br>
+                <input type="number" id="posicion">
+                <p></p>
+                <input type="button" value="Agregar Primera Posición" id="addPrimero">
+                <input type="button" value="Eliminar Primera Posición" id="EliminarPrimero">
         </fieldset>    
     </form>
 </div>
-    <div>
-        <form id="agregarinicio" method="post">
-            <fieldset>
-                <h1>Agregar Inicio</h1>
-            <h3><label for="text">Codigo del Producto:</label></h3>
-            <input type="number" id="codigo3">
-            <p></p>
-            <h3><label for="text">Nombre del producto:</label></h3>
-            <input type="text" id="nombre3">
-            <p></p>
-            <h3><label for="text">Cantidad de Productos:</label></h3>
-            <input type="text" id="cantidad3">
-            <p></p>
-            <h3><label for="text">Coste del Producto:</label></h3>
-            <input type="text" id="coste3">
-            <p></p>
-            <h3><label for="text">Descripcción:</label></h3>
-            <input type="text" id="desc3">
-            </fieldset>
-        </form>
-    </div>
 </fieldset>>
-    <div>
-    <label for="numero">Borrar por codigo de Producto:</label>
-                <input type="number" id="borrarxcod">
-                <input type="button" value="Borrar" id="btnborrar" />
-                <label for="numero">Buscar Producto por Codigo:</label>
-                <input type="number" id="buscarxcod">
-                <input type="button" value="Buscar" id="btnbuscar">
-                <p></p>
-                <input type="button" value="Listar Productos" id="btnlistar">
-                <p></p>
-                <input type="button" value="Listar Productos (Orden Inverso)" id="btnlistarinv">
-    </div>
+<form>
+    <fieldset name="2">
         <div>
-          <ul id="lista" class="list"></ul>
+            <h1>LISTA</h1>
+            <p id="Lista"></p>
         </div>
+    </fieldset>
+</form>
 </body>
 <script src="main.js"></script>
 </html>

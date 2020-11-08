@@ -1,9 +1,20 @@
-var btnadd = document.querySelector("#btnadd");
-var btnborrar = document.querySelector("#btnborrar");
-var btnbuscar = document.querySelector("#btnbuscar");
-var btnlistar = document.querySelector("#btnlistar");
-var btnlistarinv = document.querySelector("#btnlistarinv");
-var lista = document.querySelector("#lista");
+var btnagregar = document.querySelector("#Agregar");
+var btnborrar = document.querySelector("#borrar");
+var btnbuscar = document.querySelector("#Buscar");
+var btnmostar = document.querySelector("#Mostrar");
+var btnmostrarinv = document.querySelector("#MostrarInverso");
+var btninsertar = document.querySelector("#Insertar");
+var btnagregarprimero = document.querySelector("#addPrimero")
+var btneliminarprimero = document.querySelector("#EliminarPrimero")
+
+var codigo = document.querySelector("#codigo");
+var nombre = document.querySelector("#nombre");
+var desc = document.querySelector("#desc");
+var cantidad = document.querySelector("#cantidad");
+var coste = document.querySelector("#coste");
+var posicion = document.querySelector("#posicion")
+
+var lista = document.querySelector("#Lista")
 
 class Producto{
     constructor(codigo, nombre, desc, cantidad, coste, siguiente){
@@ -39,6 +50,20 @@ class Inventario{
             return null
         };
         const nuevop = nuevop(codigo, nombre, desc, cantidad, cantidad, coste)
-        
-    }
+        let current = this.inicio;
+        let previo;
+        if(index === 0){
+            nuevop.siguiente = current;
+            this.inicio = nuevop;
+        }else{
+            for(let i = 0; i < index; i++){
+                previo = current;
+                current = current.siguiente;
+            };
+            nuevop = current;
+            previo.siguiente = nuevop;
+        };
+        this.size++;
+    };
+
 };
