@@ -121,7 +121,7 @@ btnagregar.addEventListener("click", () => {
     if(Mostrar.Verificar(codigo.value)==false){
         let p = new Array (codigo.value,nombre.value,desc.value,cantidad.value,coste.value,(Number(cantidad.value)* Number(coste.value)))
         Mostrar.AgregarFinal(p)
-        lista.innerHTML = p[0]+"-"+p[1]+"-"+p[2]+"-"+p[3]+"-"+p[4]+"-"+p[5]+"-"+ "</br > Agregado con exito!"
+        lista.innerHTML = "Codigo: "+p[0]+"Nombre: "+p[1]+"Descripcion: "+p[2]+"Cantidad: "+p[3]+"Coste: "+p[4]+"Total: "+p[5]+"-"+ "</br > Agregado con exito!"
     }else{
         alert ("Error! Codigo repetido")
     };
@@ -129,9 +129,34 @@ btnagregar.addEventListener("click", () => {
 btnborrar.addEventListener("click", () =>{
     let d = Mostrar.BuscarCode(codigo.value)
     if(d!=null){
-        lista.innerHTML = d.codigo+"-"+d.nombre+"-"+d.desc+"-"+d.cantidad+"-"+d.coste+"-"+d.total+"-"+"</br > Eliminado con exito"
+        lista.innerHTML = +"Codigo: "+d.codigo+"Nombre: "+d.nombre+"Descripcion: "+d.desc+"Cantidad: "+d.cantidad+"Coste: "+d.coste+"Total: "+d.total+"-"+"</br > Eliminado con exito"
         Mostrar.EliminarCode(d)
     }else{
         alert("El producto seleccionado no Existe!")
     }
 })
+btnbuscar.addEventListener("click", () =>{
+    let busc = Mostrar.BuscarCode(codigo.value)
+    if(busc!=null){
+        lista.innerHTML = "Codigo: "+busc.codigo+"Producto: "+ busc.nombre+"Descripcion: "+ busc.desc+"Cantidad: "+busc.cantidad+"Coste: "+busc.coste+"Total: "+busc.total+ "</br > Producto Encontrado!"
+    }else{
+        alert("El producto No existe. Intente con otro codigo")
+    }
+})
+btnmostar.addEventListener("click", () =>{
+    lista.innerHTML = ""
+    let current = null
+    for(let i=0; i!=Mostrar.size;i++){
+        current = Mostrar.Recorrer(current)
+        lista.innerHTML += "Codigo: "+current.codigo+"Producto: "+ current.nombre+"Descripcion: "+ current.desc+"Cantidad: "+current.cantidad+"Coste: "+current.coste+"Total: "+current.total+ "</br >"
+    }
+});
+btnmostrarinv.addEventListener("click", () =>{
+    lista.innerHTML = ""
+    let current = null
+    let inv = new Array()
+        for(let i=0; i!=Mostrar.size;i++){
+            lista.innerHTML += "Codigo: "+busc.codigo+"Producto: "+ busc.nombre+"Descripcion: "+ busc.desc+"Cantidad: "+busc.cantidad+"Coste: "+busc.coste+"Total: "+busc.total+ "</br >"
+        }
+        lista.innerHTML += "Lista Completa!"
+});
