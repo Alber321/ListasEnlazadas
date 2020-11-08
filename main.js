@@ -17,12 +17,13 @@ var posicion = document.querySelector("#posicion")
 var lista = document.querySelector("#Lista")
 
 class Producto{
-    constructor(codigo, nombre, desc, cantidad, coste, siguiente){
+    constructor(codigo, nombre, desc, cantidad, coste, total, siguiente){
     this.codigo = codigo;
     this.nombre = nombre;
     this.desc = desc;
     this.cantidad = cantidad;
     this.coste = coste;
+    this.total = total;
     this.siguiente = siguiente;
     };
     
@@ -32,45 +33,10 @@ class Inventario{
         this.inicio = null;
         this.size = 0;
     };
-    add(codigo, nombre, desc, cantidad, coste){
-        const nuevop = new Producto(codigo, nombre, desc, cantidad, coste, null);
-        if(!this.inicio){
-            this.inicio = nuevop;
-        }else{
-            let current = this.inicio;
-            while(current.siguiente){
-                current = current.siguiente;
-            };
-            current.siguiente = nuevop;
-        };
-        this.size++
-    };
-    PosEspecifico(codigo, nombre, desc, cantidad, coste, index){
-        if(index<0 || index > this.size){
-            return null
-        };
-        const nuevop = nuevop(codigo, nombre, desc, cantidad, cantidad, coste)
-        let current = this.inicio;
-        let previo;
-        if(index === 0){
-            nuevop.siguiente = current;
-            this.inicio = nuevop;
-        }else{
-            for(let i = 0; i < index; i++){
-                previo = current;
-                current = current.siguiente;
-            };
-            nuevop = current;
-            previo.siguiente = nuevop;
-        };
+    AgregarInicio(item){
+        let nuevop = new Producto (item[0], item[1], item[2], item[3], item[4], item[5], this.inicio)
+        Mostrar.inicio = nuevop;
         this.size++;
-    };
-    AgregarInicio(codigo, nombre, desc, cantidad, coste){
-        const nuevop = new Producto(codigo, nombre, desc, cantidad, coste)
-        console.log();
-        let current = this.inicio;
-        nuevop.siguiente = current;
-        this.inicio = nuevop;
     }
     Recorrer(producto){
         if(producto==null){
@@ -98,9 +64,10 @@ class Inventario{
         };
         let current = this.inicio;
         while(current){
-            if(current.codigo === codigo){
+            if(current.codigo == codigo){
                 return current;
             };
+            current = current.siguiente;
         };
         return null;
     };
@@ -124,9 +91,47 @@ class Inventario{
     };
     EliminarInicio(){
         if(this.size>1){
-            Lista.index = Lista.inicio.siguiente;
+            Mostrar.inicio = Mostrar.inicio.siguiente;
         };
-        this.size--;
+        this.size--
     };
-    
+    posEspecifico(posi, item)
+  {
+    let nuevop = new Producto(item[0], item[1], item[2], item[3], item[4], item[5], posi.siguiente)
+    posi.siguiente = nuevop
+    this.size++
+  }
+    AgregarFinal(codigo, nombre, desc, cantidad, coste){
+        let nuevop = new Producto(codigo, nombre, desc, cantidad, coste, null)
+        if(!this.inicio){
+            this.inicio = nuevop
+        }else{
+            let current = this.head;
+            while(current.siguiente){
+                current = current.siguiente;
+            };
+            current.siguiente = nuevop
+        };
+        this.size++;
+    };
 };
+const Mostrar = new Inventario();
+
+btnagregar.addEventListener("click", () => {
+    if(Mostrar.Verificar(codigo.value)==false){
+        let p = new Array (codigo.value,nombre.value,desc.value,cantidad.value,coste.value,(Number(cantidad.value)* Number(coste.value)))
+        Mostrar.AgregarFinal(p)
+        lista.innerHTML = p[0]+"-"+p[1]+"-"+p[2]+"-"+p[3]+"-"+p[4]+"-"+p[5]+"-"+ "</br > Agregado con exito!"
+    }else{
+        alert ("Error! Codigo repetido")
+    };
+});
+btnborrar.addEventListener("click", () =>{
+    let d = Mostrar.BuscarCode(codigo.value)
+    if(d!=null){
+        lista.innerHTML = d.codigo+"-"+d.nombre+"-"+d.desc+"-"+d.cantidad+"-"+d.coste+"-"+d.total+"-"+"</br > Eliminado con exito"
+        Mostrar.EliminarCode(d)
+    }else{
+        alert("El producto seleccionado no Existe!")
+    }
+})
